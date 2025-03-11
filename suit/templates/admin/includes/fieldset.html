@@ -8,7 +8,7 @@
         </h2>{% endif %}
   {% for line in fieldset %}
     {% with total_fields=line.fields|length %}
-      <div class="control-group form-row{% if line.errors %} {% if total_fields == 1 %}error{% else %}first-error{% endif %} errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}{% if total_fields != 1 %}multi-field-row{% endif %}">
+      <div class="control-group form-row{% if line.errors %} {% if total_fields == 1 %}error{% else %}first-error{% endif %} errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {% if 'rowclass' in field.field.field.widget.attrs %}{{ field.field.field.widget.attrs.rowclass }}{% endif %}{% endfor %}{% if total_fields != 1 %}multi-field-row{% endif %}">
         {% for field in line %}
           {% spaceless %}
 
